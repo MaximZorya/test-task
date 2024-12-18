@@ -1,0 +1,75 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  transition: transform .2s;
+  &__container {
+    padding: 0 15px;
+  }
+  &--hide {
+    transform: translateX(-100%);
+  }
+}
+.sidebarButton {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 30px;
+  width: 30px;
+  height: 60px;
+  margin-right: -30px;
+  background: #fff;
+  border-radius: 0 4px 4px 0;
+  &__arrow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: transform .2s;
+    &--hide {
+      transform: scale(-1, 1);
+    }
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      margin-top: -6px;
+      border: 3px solid var(--blue);
+      border-left: none;
+      border-bottom: none;
+      top: 50%;
+      left: 6px;
+      transform: rotate(45deg);
+      background: #fff;
+    }
+  }
+}
+.SidebarSwitch {
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  border-radius: 4px;
+  background: var(--grey);
+  padding: 2px;
+  user-select: none;
+  margin-bottom: 15px;
+  &__btn {
+    cursor: pointer;
+    width: 50%;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 4px;
+    transition: background-color .2s;
+    background: var(--grey);
+    padding: 5px;
+    &--active {
+      background: #fff;
+    }
+  }
+}

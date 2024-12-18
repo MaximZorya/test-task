@@ -1,0 +1,17 @@
+$container: 500px;
+$noMobile: $container+1px;
+$blue: #2A56C9;
+$black: #111111;
+$green: #14B31F;
+$red: #FC5A5A;
+$grey: #ddd;
+$orange: #EA8117;
+:root {
+  --main: #2A56C9;
+  --blue: #{$blue};
+  --green: #{$green};
+  --grey: #{$grey};
+  --black: #{$black};
+  --red: #{$red};
+  --orange: #{$orange};
+}

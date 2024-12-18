@@ -1,0 +1,52 @@
+.UserList {
+}
+.UserItem {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--grey);
+  position: relative;
+  &:last-child {
+    border: none;
+  }
+  &__avatar {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  &__rating {
+    font-size: 30px;
+    text-align: center;
+    line-height: 1;
+  }
+  &__figure {
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__name {
+    margin-left: 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: var(--black);
+  }
+  &__arrow {
+    position: absolute;
+    right: 20px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    border: 2px solid var(--blue);
+    border-left: none;
+    border-bottom: none;
+    top: 50%;
+    transform: rotate(45deg);
+    background: #fff;
+  }
+}
