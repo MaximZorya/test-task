@@ -1,6 +1,7 @@
 $container: 500px;
 $noMobile: $container+1px;
 $blue: #2A56C9;
+$lightblue: #e3f2fd;
 $black: #111111;
 $green: #14B31F;
 $red: #FC5A5A;
@@ -9,6 +10,7 @@ $orange: #EA8117;
 :root {
   --main: #2A56C9;
   --blue: #{$blue};
+  --lightblue: #{$lightblue};
   --green: #{$green};
   --grey: #{$grey};
   --black: #{$black};
