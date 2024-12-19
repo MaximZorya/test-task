@@ -1,9 +1,10 @@
 <script setup>
-    import {ref, computed, watch} from 'vue'
+    import {ref, computed, watch, inject} from 'vue'
     import SidebarSwitch from '@/components/SidebarSwitch.vue'
     import UserItem from '@/components/UserItem.vue'
     import {useUserStore} from '@/stores/UserStore'
 
+    const {isMobile} = inject("isMobile");
     const UserStore = useUserStore()
     getUsers()
 
@@ -13,7 +14,7 @@
 
     const search = ref('')
     const type = ref('clients')
-    const show = ref(true)
+    const show = ref(!isMobile.value)
 
     const users = computed(() => {
         let users = [...UserStore.users]
@@ -25,7 +26,7 @@
         }
         if (type.value === 'rating') {
             users.sort((a, b) => {
-                return  b.rating - a.rating ;
+                return b.rating - a.rating;
             })
         }
         return users
@@ -44,7 +45,7 @@
 <template>
     <aside class="sidebar" :class="[{'sidebar--hide':!show}]">
         <div @click="toggle" class="sidebarButton">
-            <div class="sidebarButton__arrow" :class="[{'sidebarButton__arrow--hide':!show}]"></div>
+            <div class="sidebarButton__arrow" :class="[{'sidebarButton__arrow--hide':show}]"></div>
         </div>
         <div class="sidebar__top">
             <div class="sidebar__container">

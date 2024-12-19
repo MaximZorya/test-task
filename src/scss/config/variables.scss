@@ -1,5 +1,4 @@
-$container: 500px;
-$noMobile: $container+1px;
+$md: 768px;
 $blue: #2A56C9;
 $lightblue: #e3f2fd;
 $black: #111111;
@@ -16,4 +15,5 @@ $orange: #EA8117;
   --black: #{$black};
   --red: #{$red};
   --orange: #{$orange};
+  --md: #{$md}
 }

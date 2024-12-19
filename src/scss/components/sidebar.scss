@@ -6,6 +6,7 @@
   height: 100%;
   background: #fff;
   transition: transform .2s;
+  z-index: 99;
   &__top {
     background: var(--lightblue);
   }

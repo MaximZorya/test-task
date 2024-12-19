@@ -51,7 +51,10 @@
   }
 }
 .UserCard {
-  width: 400px;
+  width: calc(100% - 30px);
+  max-width: 400px;
+  @media (min-width: var(--md)) {
+  }
   &__avatar {
     flex-shrink: 0;
     border-radius: 15px;
