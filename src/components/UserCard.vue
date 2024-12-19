@@ -38,8 +38,7 @@
 
     const user = computed(() => UserStore.user)
     const isLoaded = computed(() => {
-        const keys = Object.keys(user.value)
-        return Boolean(keys.length && id.value)
+        return user.value && id.value
     })
 </script>
 <template>

@@ -8,7 +8,7 @@ export const useUserStore = defineStore('UserStore', () => {
     const userSaved = ref([])
     getSavedUser()
     const users = ref([])
-    const user = ref({})
+    const user = ref(null)
 
     const list = computed(() => {
         let result = []
@@ -29,6 +29,7 @@ export const useUserStore = defineStore('UserStore', () => {
         return result
     })
     const userData = computed(() => {
+        if (!user.value) return
         const saved = userSaved.value.find(el => user.value.id === el.id)
         const rating = saved ? saved.rating : 0
         const comment = saved ? saved.comment : ''
@@ -84,7 +85,6 @@ export const useUserStore = defineStore('UserStore', () => {
     }
 
     async function getUser(payload) {
-        user.value = {}
         try {
             const rs = await api.user(payload)
             const data = await rs.json()
