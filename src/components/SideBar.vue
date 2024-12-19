@@ -25,7 +25,7 @@
         }
         if (type.value === 'rating') {
             users.sort((a, b) => {
-                return a.rating - b.rating;
+                return  b.rating - a.rating ;
             })
         }
         return users
