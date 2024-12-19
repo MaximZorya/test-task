@@ -23,6 +23,11 @@
                 return name.includes(search.value)
             })
         }
+        if (type.value === 'rating') {
+            users.sort((a, b) => {
+                return a.rating - b.rating;
+            })
+        }
         return users
     })
 
