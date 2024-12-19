@@ -2,7 +2,11 @@ import {ref, readonly, computed} from 'vue'
 import {defineStore} from 'pinia'
 import {api} from '@/api'
 
+const name = 'userSaved'
+
 export const useUserStore = defineStore('UserStore', () => {
+    const userSaved = ref([])
+    getSavedUser()
     const users = ref([])
     const user = ref({})
 
@@ -10,10 +14,14 @@ export const useUserStore = defineStore('UserStore', () => {
         let result = []
         if (users.value.length) {
             users.value.forEach(user => {
+                const saved = userSaved.value.find(el => user.id === el.id)
+                const rating = saved ? saved.rating : 0
+
                 result.push({
                     ...user,
                     fullName: `${user.first_name} ${user.last_name}`,
-                    rating: 0
+                    rating,
+
                 })
             })
             result.sort((a, b) => a.last_name.localeCompare(b.last_name))
@@ -21,17 +29,43 @@ export const useUserStore = defineStore('UserStore', () => {
         return result
     })
     const userData = computed(() => {
+        const saved = userSaved.value.find(el => user.value.id === el.id)
+        const rating = saved ? saved.rating : 0
+        const comment = saved ? saved.comment : ''
         const data = {
             ...user.value,
             fullName: `${user.value.first_name} ${user.value.last_name}`,
-            rating: 0
+            rating,
+            comment
         }
 
         return data
     })
 
     function updateUserData(payload) {
-        console.log('updateUserData', payload)
+        if (userSaved.value.length) {
+            const index = userSaved.value.findIndex(el => el.id === payload.id)
+            if (index > -1) {
+                userSaved.value[index] = payload
+            } else {
+                userSaved.value.push(payload)
+            }
+        } else {
+            userSaved.value.push(payload)
+        }
+        saveUserData()
+        getSavedUser()
+    }
+
+    function saveUserData() {
+        localStorage.setItem(name, JSON.stringify(userSaved.value))
+    }
+
+    function getSavedUser() {
+        const saved = localStorage.getItem(name)
+        if (saved) {
+            userSaved.value = JSON.parse(saved)
+        }
     }
 
     async function getUsers() {

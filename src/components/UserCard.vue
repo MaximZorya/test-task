@@ -20,6 +20,8 @@
             id: id.value
         }
         await UserStore.getUser(payload)
+        rating.value = user.value.rating
+        comment.value = user.value.comment
     }
 
     function submit() {
